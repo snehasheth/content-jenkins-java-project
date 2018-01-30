@@ -9,6 +9,11 @@ pipeline
 
   stages
   {
+    stage('Unit Tests')
+    {
+      sh 'ant -f test.xml -v'
+      junit 'reports/result.xml'
+    }
     stage('build')
     {
       steps
@@ -16,6 +21,7 @@ pipeline
         sh 'ant -f build.xml -v'
       }
     }
+
   }
   post
   {
